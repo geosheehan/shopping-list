@@ -1,0 +1,19 @@
+{
+  "name": "shopping-list",
+  "version": "1.0.0",
+  "description": "App to manage shopping lists",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geosheehan/shopping-list.git"
+  },
+  "author": "Geoffry Sheehan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geosheehan/shopping-list/issues"
+  },
+  "homepage": "https://github.com/geosheehan/shopping-list#readme"
+}
