@@ -7,6 +7,7 @@ const session = require('express-session');
 
 // Routes
 const homeRoutes = require('./routes/home');
+const listRoutes = require('./routes/list');
 
 // Constants
 const MongoStore = require('connect-mongo')(session);
@@ -50,6 +51,7 @@ app.use(express.static('public'));
 
 // Route middleware
 app.use('/', homeRoutes);
+app.use('/lists', listRoutes);
 
 app.listen(PORT, console.log(
    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
