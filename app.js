@@ -1,6 +1,7 @@
 // Includes
 const dotenv = require('dotenv');
 const express = require('express');
+const flash = require('express-flash');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
@@ -35,24 +36,27 @@ app.use(express.json());
 // Static folder
 app.use(express.static('public'));
 
-// // Sessions
-// app.use(
-//    session({
-//       secret: 'Leroy Jenkins',
-//       resave: false,
-//       saveUninitialized: false,
-//       store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//    })
-// );
+// Sessions
+app.use(
+   session({
+      secret: 'Leroy Jenkins',
+      resave: false,
+      saveUninitialized: false,
+      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+   })
+);
 
-// // Passport middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash());
 
 // Route middleware
 app.use('/', homeRoutes);
 app.use('/lists', listRoutes);
 
-app.listen(PORT, console.log(
-   `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
-));
+app.listen(
+   PORT,
+   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+);
