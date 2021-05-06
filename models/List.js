@@ -5,10 +5,18 @@ const ListSchema = new mongoose.Schema({
       type: String,
       require: true,
    },
+   order: {
+      type: Number,
+      required: true,
+      unique: false,
+   },
    userId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       require: true,
+      unique: false,
    },
 });
+
+ListSchema.index({ order: 1, userId: 1 }, { unique: true });
 
 module.exports = mongoose.model('List', ListSchema);
