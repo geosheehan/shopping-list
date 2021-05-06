@@ -2,6 +2,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const flash = require('express-flash');
+const logger = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
@@ -26,7 +27,6 @@ connectDB();
 
 // Create and configure app
 const app = express();
-
 app.set('view engine', 'ejs');
 
 // Body parser
@@ -35,6 +35,9 @@ app.use(express.json());
 
 // Static folder
 app.use(express.static('public'));
+
+// Setup logging
+app.use(logger('dev'));
 
 // Sessions
 app.use(
