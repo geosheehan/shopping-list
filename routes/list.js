@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const listController = require('../controllers/list');
+const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
 // @desc    Show all lists
 // @route   GET /lists
-router.get('/', listController.getLists);
+router.get('/', ensureAuth, listController.getLists);
 
 // // @desc    Show all lists
 // // @route   GET /lists
