@@ -5,17 +5,21 @@ const User = require('../models/User');
 module.exports = {
    getLogin: (req, res) => {
       if (req.user) return res.redirect('/lists');
-      res.render('login');
+      const header = 'Login';
+      res.render('login', { header });
    },
    postLogin: async (req, res, next) => {
-      const valErrors = [];
-      if (!validator.isEmail(req.body.email))
-         valErrors.push({ msg: 'Please enter a valid email address.' });
-      if (validator.isEmpty(req.body.password))
-         valErrors.push({ msg: 'Password cannot be blank.' });
+      let valErrors = 0;
+      if (!validator.isEmail(req.body.email)) {
+         req.flash('email', { error: 'Please enter a valid email address.' });
+         valErrors++;
+      }
+      if (validator.isEmpty(req.body.password)) {
+         req.flash('password', { error: 'Password cannot be blank.' });
+         valErrors++;
+      }
 
-      if (valErrors.length) {
-         req.flash('errors', valErrors);
+      if (0 < valErrors) {
          return res.redirect('/login');
       }
       req.body.email = validator.normalizeEmail(req.body.email, {
