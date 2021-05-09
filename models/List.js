@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
+const Category = require('./Category');
 
 const ListSchema = new mongoose.Schema({
    name: {
       type: String,
       require: true,
+   },
+   desc: {
+      type: String,
+      default: '',
    },
    order: {
       type: Number,
@@ -18,5 +23,12 @@ const ListSchema = new mongoose.Schema({
 });
 
 ListSchema.index({ order: 1, userId: 1 }, { unique: true });
+
+ListSchema.post('save', async function (doc) {
+   await Category.create({
+      name: 'Uncategorized',
+      listId: doc._id
+   });
+});
 
 module.exports = mongoose.model('List', ListSchema);
