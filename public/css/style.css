@@ -30,6 +30,11 @@
    font-size: 2em;
 }
 
+.add::before {
+   content: '\f067';
+   font-size: 2em;
+}
+
 input[type="submit"] {
    width: 100%;
 }
