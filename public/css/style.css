@@ -1,0 +1,35 @@
+.alert.alert-danger {
+   color: red;
+}
+
+.login-container {
+   width: 400px;
+   margin-top: 50px;
+}
+
+.icon-before::before {
+   display: inline-block;
+   font-family: 'Font Awesome 5 Free';
+   font-weight: 900;
+   font-style: normal;
+   font-variant: normal;
+   text-rendering: auto;
+   -webkit-font-smoothing: antialiased;
+}
+
+.email::before {
+   content: '\f0e0';
+   /* color: white;
+   font-size: 0.75em;
+   margin-right: 0.5em; */
+}
+
+.google::before {
+   content: '\f1a0';
+   font-family: 'Font Awesome 5 Brands';
+   font-size: 2em;
+}
+
+input[type="submit"] {
+   width: 100%;
+}
