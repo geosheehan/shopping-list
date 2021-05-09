@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 module.exports = {
    getLogin: (req, res) => {
-      if (req.user) return res.redirect('/lists');
+      if (req.user) return res.redirect('/dashboard');
       res.render('login', { title: 'Login', layout: './layouts/login' });
    },
    postLogin: async (req, res, next) => {
@@ -35,7 +35,7 @@ module.exports = {
          req.logIn(user, (err) => {
             if (err) return next(err);
             req.flash('success', { msg: 'Success! You are logged in.' });
-            res.redirect(req.session.returnTo || '/lists');
+            res.redirect(req.session.returnTo || '/dashboard');
          });
       })(req, res, next);
    },
@@ -52,7 +52,7 @@ module.exports = {
       });
    },
    getRegister: (req, res) => {
-      if (req.user) return res.redirect('/lists');
+      if (req.user) return res.redirect('/dashboard');
       res.render('register', { title: 'Register', layout: './layouts/login' });
    },
    postRegister: async (req, res, next) => {
@@ -95,7 +95,7 @@ module.exports = {
                if (err) return next(err);
                req.logIn(user, (err) => {
                   if (err) return next(err);
-                  res.redirect('/lists');
+                  res.redirect('/dashboard');
                });
             });
          }

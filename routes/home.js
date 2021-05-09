@@ -7,7 +7,11 @@ const router = express.Router();
 
 // @desc    Show the landing page
 // @route   GET /
-router.get('/', ensureGuest, homeController.getIndex);
+router.get('/', ensureGuest, homeController.landing);
+
+// @desc    Show users shopping lists
+// @route   GET /dashboard
+router.get('/dashboard', /*ensureAuth,*/ homeController.dashboard);
 
 // @desc    Show the login page
 // @route   GET /login

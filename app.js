@@ -62,7 +62,7 @@ app.use(flash());
 
 // Route middleware
 app.use('/', homeRoutes);
-app.use('/lists', listRoutes);
+app.use('/list', listRoutes);
 
 app.listen(
    PORT,

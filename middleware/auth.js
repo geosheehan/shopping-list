@@ -5,6 +5,6 @@ module.exports = {
    },
    ensureGuest: (req, res, next) => {
       if (!req.isAuthenticated()) return next();
-      res.redirect('/lists');
+      res.redirect('/dashboard');
    },
 };
