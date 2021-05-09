@@ -1,40 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-   </head>
-   <body>
-      <%- include('./partials/header') -%>
-      <% if(locals.messages.auth) { messages.auth.forEach( (error) => { %>
-      <div class="alert alert-danger"><%= error.msg %></div>
-      <% }); } %>
+<div class="conatainer">
 
-      <div class="container login-container">
-         <div class="card">
-
-         </div>
-      </div>
-
+   <%# Authentication Errors%>
+   <% if(locals.messages.auth) {
+         messages.auth.forEach( (error) => {
+            %><div class="alert alert-danger"><%= error.msg %></div><%
+         });
+      }
+   %>
+   <div class="row">
       <form action="/login" method="POST">
-         <%# Email #%>
-         <label for="email">Email:</label>
-         <input type="text" id="email" name="email" />
-         <% if(locals.messages.email) { messages.email.forEach( (email) => { %>
-         <div class="alert alert-danger"><%= email.error %></div>
-         <% }); } %>
+         <%# Email %>
+         <label for="email" >Email:</label>
+         <div class="icon-before email">
+            <input type="text" id="email" name="email" placeholder="Email"/>
+         </div>
+         <%# Email Errors %>
+         <% if(locals.messages.email) {
+               messages.email.forEach( (email) => {
+                  %><div class="alert alert-danger"><%= email.error %></div><%
+               });
+            }
+         %>
 
-         <%# Password #%>
+         <%# Password %>
          <label for="password">Password:</label>
          <input type="password" id="password" name="password" />
-         <% if(locals.messages.password) { messages.password.forEach( (password) => { %>
-         <div class="alert alert-danger"><%= password.error %></div>
-         <% }); } %>
+         <%# Password Errors %>
+         <% if(locals.messages.password) {
+               messages.password.forEach( (password) => {
+                  %><div class="alert alert-danger"><%= password.error %></div><%
+               });
+            }
+         %>
 
-         <%# Button #%>
-         <input type="submit" value="Login" />
+         <%# Submit %>
+         <input type="submit" class="btn waves-effect waves-light" value="Login" />
+
       </form>
-   </body>
-</html>
+   </div>
+
+   <div class="row center-align">
+      <span>Or Login Using</span>
+   </div>
+
+   <div class="row center-align">
+      <a href="#" class="btn-floating btn-large icon-before google"></a>
+      <a href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+      <a href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+   </div>
+
+   <div class="row center-align">
+      <span>Need An Account?</span>
+   </div>
+
+   <div class="row center-align">
+      <a href="/register">Sign Up</a>
+   </div>
+</div>

@@ -2,6 +2,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const flash = require('express-flash');
+const layout = require('express-ejs-layouts');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -27,6 +28,10 @@ connectDB();
 
 // Create and configure app
 const app = express();
+
+// Setup EJS layouts
+app.use(layout);
+app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 // Body parser

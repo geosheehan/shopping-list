@@ -5,8 +5,7 @@ const User = require('../models/User');
 module.exports = {
    getLogin: (req, res) => {
       if (req.user) return res.redirect('/lists');
-      const header = 'Login';
-      res.render('login', { header });
+      res.render('login', { title: 'Login', layout: './layouts/login' });
    },
    postLogin: async (req, res, next) => {
       let valErrors = 0;
@@ -54,7 +53,7 @@ module.exports = {
    },
    getRegister: (req, res) => {
       if (req.user) return res.redirect('/lists');
-      res.render('signup');
+      res.render('register', { title: 'Register', layout: './layouts/login' });
    },
    postRegister: async (req, res, next) => {
       const valErrors = [];
