@@ -10,8 +10,8 @@ const CategorySchema = new mongoose.Schema({
    listId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'List',
-      unique: false,
       required: true,
+      unique: false,
    },
 });
 
