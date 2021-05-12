@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const passport = require('passport');
 const validator = require('validator');
 const User = require('../models/User');
@@ -77,6 +78,7 @@ module.exports = {
          email: req.body.email,
          // Don't worry, this is being hashed through the model
          password: req.body.password,
+         favorites: mongoose.Types.ObjectId(),
       });
 
       User.findOne(
