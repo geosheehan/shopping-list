@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const List = require('./List');
 
-const CategorySchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
    name: {
       type: String,
       require: true,
@@ -13,10 +14,16 @@ const CategorySchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   catId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
+   checked: {
+      type: Boolean,
+      required: true,
+      default: false,
    },
+   listId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: List,
+      required: true,
+   }
 });
 
-module.exports = mongoose.model('Category', CategorySchema);
+module.exports = mongoose.model('Item', ItemSchema);
