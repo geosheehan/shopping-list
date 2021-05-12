@@ -22,6 +22,10 @@ const UserSchema = new mongoose.Schema({
       required: true,
       default: Date.now,
    },
+   favorites: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: List,
+   },
    admin: {
       type: Boolean,
       required: true,
@@ -38,6 +42,7 @@ UserSchema.pre('save', function (next) {
 
 UserSchema.post('save', async function (doc) {
    await List.create({
+      _id: doc.favorites,
       name: 'Favorites',
       order: 0,
       userId: doc._id,
