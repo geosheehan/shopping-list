@@ -1,11 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
 import Item from './Item/Item.js';
 
-function List() {
+function List({ id, name }) {
    return (
-      <div>
-         <Item />
-         <button>Add</button>
+      <div id={id}>
+         {name}
       </div>
    );
 }
